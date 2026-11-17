@@ -162,4 +162,7 @@ app.get('/',(_req,res)=>res.sendFile(path.join(projectRoot,'HTML','index.html'))
 app.get('/staff.html',(_req,res)=>res.sendFile(path.join(projectRoot,'HTML','staff.html')));
 app.use('/HTML',express.static(path.join(projectRoot,'HTML')));app.use('/CSS',express.static(path.join(projectRoot,'CSS')));app.use('/JS',express.static(path.join(projectRoot,'JS')));app.use('/Assets',express.static(path.join(projectRoot,'Assets')));
 app.use((error,_req,res,_next)=>{console.error(error);res.status(500).json({error:'Внутренняя ошибка сервера.'});});
-app.listen(port,()=>console.log(`Тёплый круг открыт: http://localhost:${port}`));
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => console.log(`Тёплый круг открыт: http://localhost:${port}`));
+}
+module.exports = app;
