@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ed">
+  <meta name="description" content="Кофейня Тёплый круг — ваш кофе, приготовленный с теплом.">
+  <title>Тёплый круг — кофе с теплом</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/styles.css">
+  <script src="/JS/shop.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/HTML/index.html" aria-label="Тёплый круг — на главную"><span class="brand-mark">т</span><span>тёплый<br>круг</span></a>
+    <nav class="main-nav" aria-label="Основная навигация"><a href="#menu">Меню</a><a href="#story">О кофейне</a><a href="#my-orders">Мои заказы</a></nav>
+    <button class="cart-open" id="cart-open" aria-label="Открыть корзину">Корзина <span id="cart-count">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="story">
+      <div class="hero-copy"><span class="eyebrow"><i></i> ТВОЁ ТИХОЕ МЕСТО В ГОРОДЕ</span><h1>Хороший день<br>начинается <em>здесь.</em></h1><p>Завариваем любимое, печём свежее и добавляем в каждый заказ немного тепла.</p><a class="button button-dark" href="#menu">Выбрать напиток <span>↗</span></a><div class="hero-note"><span class="note-star">✳</span><span>Отборное зерно<br>и нежная забота</span></div></div>
+      <div class="hero-art"><div class="sun-disc"></div><div class="hero-photo"><img src="/Assets/flat-white.svg" alt="Чашка кофе с молочной пеной"><span class="round-stamp">СВЕЖЕЕ<br>КАЖДЫЙ<br>ДЕНЬ</span></div><div class="scribble">с любовью<br>к каждому зёрнышку <span>↙</span></div><div class="hero-plant">✳</div></div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading"><div><span class="eyebrow">МЕНЮ КОФЕЙНИ</span><h2>Что будет <em>сегодня?</em></h2></div><p>Маленькие радости, приготовленные<br>только для тебя.</p></div>
+      <div class="category-tabs" id="categories" role="tablist" aria-label="Категории меню"></div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="tracking-section" id="tracking"><div class="tracking-copy"><span class="eyebrow">УЖЕ ЗАКАЗАЛИ?</span><h2>Проверим,<br><em>как там кофе.</em></h2><p>Введите номер заказа из подтверждения — покажем, на каком он этапе.</p></div><div><form id="track-form" class="track-form"><label for="order-id">Номер заказа</label><div class="track-input"><input id="order-id" autocomplete="off" placeholder="Например, 8f3…" required><button class="button button-dark" type="submit">Проверить <span>→</span></button></div><div id="track-result" class="track-result" aria-live="polite"></div></form><div class="customer-history" id="customer-history" hidden><h3>Ваши последние заказы</h3><div id="history-list"></div></div></div></section>
+    <section class="my-orders-section" id="my-orders"><div class="section-heading"><div><span class="eyebrow">ЛИЧНЫЙ КАБИНЕТ ПОКУПАТЕЛЯ</span><h2>Мои <em>заказы.</em></h2></div><p>Войдите по имени и телефону,<br>указанным при оформлении.</p></div><form id="my-orders-form" class="my-orders-lookup"><label for="history-name">Имя</label><input id="history-name" required minlength="2" placeholder="Имя при заказе"><label for="history-phone">Телефон</label><input id="history-phone" type="tel" required placeholder="Телефон при заказе"><button class="button button-dark">Показать мои заказы <span>→</span></button><p class="form-error" id="my-orders-error" role="alert"></p></form><div id="my-orders-list" class="my-orders-list"></div></section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#"><span class="brand-mark">т</span><span>тёплый<br>круг</span></a><span>Небольшая кофейня. Большая любовь к кофе.</span><a href="/staff.html">Для команды ↗</a></footer>
+
+  <div class="scrim" id="scrim"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Корзина" aria-hidden="true"><div class="drawer-head"><div><span class="eyebrow">ВАШ ВЫБОР</span><h2>Корзина</h2></div><button class="icon-button" id="cart-close" aria-label="Закрыть корзину">×</button></div><div id="cart-items" class="cart-items"></div><div id="cart-empty" class="cart-empty"><span>☕</span><p>Пока здесь пусто.<br>Самое время выбрать кофе.</p><button class="text-button" id="go-menu">Перейти к меню ↗</button></div><div class="cart-bottom"><div class="total-row"><span>Итого</span><strong id="cart-total">0 ₸</strong></div><button class="button button-dark checkout-button" id="checkout-open">Перейти к оформлению <span>→</span></button><p>Оплата при получении в кофейне</p></div></aside>
+
+  <div class="modal-wrap" id="checkout-modal" aria-hidden="true"><div class="modal-card"><button class="icon-button modal-close" data-close-modal aria-label="Закрыть">×</button><span class="eyebrow">ЕЩЁ ПАРА ШАГОВ</span><h2>Оформить <em>заказ</em></h2><form id="checkout-form"><label for="customer-name">Как к вам обращаться?</label><input id="customer-name" name="name" minlength="2" maxlength="80" required placeholder="Ваше имя"><label for="customer-phone">Номер телефона</label><input id="customer-phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__"><label for="customer-comment">Пожелание <span>(необязательно)</span></label><textarea id="customer-comment" name="comment" maxlength="500" rows="3" placeholder="Например, поменьше сиропа"></textarea><div class="checkout-summary"><span id="checkout-summary-text">Ваш заказ</span><strong id="checkout-total">0 ₸</strong></div><p class="form-error" id="checkout-error" role="alert"></p><button class="button button-dark full-button" type="submit">Подтвердить заказ <span>↗</span></button></form></div></div>
+
+  <div class="modal-wrap" id="success-modal" aria-hidden="true"><div class="modal-card success-card"><button class="icon-button modal-close" data-close-modal aria-label="Закрыть">×</button><div class="success-icon">✓</div><span class="eyebrow">ЗАКАЗ ПРИНЯТ</span><h2>Спасибо,<br><em>мы уже готовим.</em></h2><p>Номер заказа: <strong id="success-id"></strong></p><p class="success-hint">Сохраните его, чтобы проверить статус. Обновления появятся и в этом окне.</p><div id="success-status" class="status-pill">Новый</div><button class="button button-dark full-button" data-close-modal>Отлично <span>♡</span></button></div></div>
+  <div class="modal-wrap" id="customer-receipt-modal" aria-hidden="true"><div class="modal-card receipt-modal-card"><button class="icon-button modal-close" id="customer-receipt-close" aria-label="Закрыть">×</button><div id="customer-receipt-content"></div><div class="receipt-actions"><button class="button button-outline" id="customer-receipt-print">Распечатать</button><button class="button button-dark" id="customer-receipt-pdf">Скачать PDF ↓</button></div></div></div>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
